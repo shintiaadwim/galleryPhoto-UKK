@@ -24,14 +24,12 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
-Route::get('/photo', [PhotoController::class, 'index'])->name('photo');
 
 // Auth Login dan Register
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
-
 // logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -39,4 +37,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/album', [AlbumController::class, 'index'])->name('album');
 // Tambah Album
 Route::get('/add-album', [AlbumController::class, 'show'])->name('add-album');
-Route::post('/create-album', [AlbumController::class, 'create'])->name('create-album');
+Route::post('/create', [AlbumController::class, 'create'])->name('create');
+
+// Photo
+Route::get('/photo', [PhotoController::class, 'index'])->name('photo');
+// Tambah Photo
+Route::get('/add-photo', [PhotoController::class, 'show'])->name('add-photo');
+// Route::post('/create', [PhotoController::class, 'create'])->name('create');

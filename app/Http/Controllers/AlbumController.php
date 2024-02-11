@@ -11,7 +11,6 @@ class AlbumController extends Controller
     public function index()
     {
         $albums = Album::all();
-
         return view('album.album', ['albums' => $albums]);
     }
 
@@ -35,11 +34,11 @@ class AlbumController extends Controller
                 'adminid' => $userId,
             ]);
 
-            return view('album.album');
-            // return redirect('album');
+            session()->flash('success', 'Album berhasil dibuat.');
+            return redirect('album');
         } else {
-            // Handle the case where the user is not logged in
-            // Redirect the user to the login page or display an error message
+            session()->flash('error', 'Terjadi kesalahan. Mohon coba lagi.');
+            return redirect()->back();
         }
     }
 

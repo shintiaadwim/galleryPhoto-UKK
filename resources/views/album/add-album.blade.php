@@ -7,7 +7,7 @@
     <div class="p-4 rounded-lg mt-14 flex justify-center items-center">
         <div
             class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <form action="/create-album" method="POST" class="mt-2">
+            <form action="/create" method="POST" class="mt-2">
                 @csrf
                 <div class="max-w-sm mb-2">
                     <div class="mb-2">
