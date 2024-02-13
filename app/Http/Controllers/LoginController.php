@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -16,19 +17,14 @@ class LoginController extends Controller
 
     public function loginproses(Request $request)
     {
-        // if (Auth::attempt($request->only('username', 'password'))) {
-        //     $request->session()->regenerate();
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
+            $adminId = Admin::select()->where('email', '=', $request->email)->get();
 
-        //     return redirect('/home');
-        // }
-
-        if (Auth::guard('web')->attempt($request->only('username', 'password'))) {
-            $request->session()->regenerate();
-
+            $request->session()->put('session_id', $adminId[0]->adminid);
             return redirect('/home');
         }
 
-        return redirect('auth.login');
+        return redirect('login');
     }
 
     public function register()
